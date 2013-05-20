@@ -1,0 +1,51 @@
+package com.aut;
+
+import android.os.RemoteException;
+
+import com.android.uiautomator.core.UiDevice;
+import com.android.uiautomator.core.UiObject;
+import com.android.uiautomator.core.UiObjectNotFoundException;
+import com.android.uiautomator.core.UiSelector;
+import com.android.uiautomator.testrunner.UiAutomatorTestCase;
+
+public class AutTestCase extends UiAutomatorTestCase {   
+  
+	public void clickByDescription(String text) throws UiObjectNotFoundException {
+        UiObject obj = new UiObject(new UiSelector().description(text));
+        obj.clickAndWaitForNewWindow();
+	}
+
+	public void clickByText(String text) throws UiObjectNotFoundException {
+        UiObject obj = new UiObject(new UiSelector().text(text));
+        obj.clickAndWaitForNewWindow();
+	}
+	
+	public void clickByTextContains(String text) throws UiObjectNotFoundException{
+		UiObject obj = new UiObject(new UiSelector().textStartsWith(text));
+		obj.clickAndWaitForNewWindow();
+	}
+	
+	public void pressMenu() throws UiObjectNotFoundException {
+		getUiDevice().pressMenu();
+	}
+	
+	public void pressBack() throws UiObjectNotFoundException {
+		getUiDevice().pressBack();
+	}	
+	
+	public void pressHome() throws UiObjectNotFoundException {
+		getUiDevice().pressHome();
+	}
+	
+	public void pressSearch() throws UiObjectNotFoundException {
+		getUiDevice().pressSearch();		
+	}
+	
+	public void pressRecentApps() throws UiObjectNotFoundException, RemoteException {
+		getUiDevice().pressRecentApps();		
+	}
+	
+	public void clickOnScreen(int x,int y) throws UiObjectNotFoundException {
+		getUiDevice().click(x, y);
+	}	
+}
