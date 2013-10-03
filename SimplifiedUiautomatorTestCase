@@ -9,6 +9,55 @@ import com.android.uiautomator.core.UiSelector;
 import com.android.uiautomator.testrunner.UiAutomatorTestCase;
 
 public class AutTestCase extends UiAutomatorTestCase {   
+	private enum OnOff {
+    	Off,
+    	On
+	};
+	
+	private void setSwitchTo(OnOff value) throws UiObjectNotFoundException {
+	    String text;
+    	UiObject switchObject = getSwitchObject();
+    	for (int attempts = 0; attempts < 5; attempts++) {
+        text = switchObject.getText();
+        boolean switchIsOn = switchObject.isChecked();
+        final OnOff result;
+        if (switchIsOn) {
+            result = OnOff.On;
+        } else {
+            result = OnOff.Off;
+        }
+
+        System.out.println("Value of switch is " + switchObject.isSelected() + ", " + text + ", " + switchIsOn);
+        if (result == value) {
+            System.out.println("Switch set to correct value " + result);
+            break;
+        } else {
+            switchObject.click();
+        }
+    }
+}
+
+public doWifi_Off{// Validate that the package name is the expected one
+    UiObject settingsValidation = new UiObject(new UiSelector()
+    .packageName("com.android.settings"));
+    assertTrue("Unable to detect Settings", settingsValidation.exists());
+Here is the new code:
+
+    UiSelector settingsItems = new UiSelector().className(android.widget.TextView.class.getName());
+    UiObject wiFi = appViews.getChildByText(settingsItems, "Wi-Fi");
+
+    // We can click on Wi-Fi, e.g. wiFi.clickAndWaitForNewWindow();
+    // So we know we have found the Wi-Fi setting
+
+    UiSelector switchElement = new UiSelector().className(android.widget.Switch.class.getName());
+    setSwitchTo(OnOff.Off); // Or set it to On as you wish :)
+}
+private UiObject getSwitchObject() {
+    UiObject switchObject = new UiObject(new UiSelector().className(android.widget.Switch.class.getName()));
+    assertTrue("Unable to find the switch object", switchObject.exists());
+    String text;
+    return switchObject;
+}
 
 	public static void swipeDownNotificationBar () {
     	UiDevice deviceInstance = UiDevice.getInstance();
