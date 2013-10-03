@@ -47,5 +47,46 @@ public class AutTestCase extends UiAutomatorTestCase {
 	
 	public void clickOnScreen(int x,int y) throws UiObjectNotFoundException {
 		getUiDevice().click(x, y);
-	}	
+	}
+	public void clickOnText(String str) throws UiObjectNotFoundException{
+		UiObject clickOnText = new UiObject(new UiSelector()
+        .text(str));
+		clickOnText.click();	
+	}
+	
+	public void clickOnTextStartsWith(String str) throws UiObjectNotFoundException{
+		UiObject clickOnTextStartsWith = new UiObject(new UiSelector()
+        .textStartsWith(str));
+		clickOnTextStartsWith.click();
+	}
+	
+	public void clickOnDescriptionContains(String str) throws UiObjectNotFoundException{
+		UiObject clickOnDescriptionContains = new UiObject(new UiSelector()
+        .descriptionContains(str));
+		clickOnDescriptionContains.click();
+	}
+	
+	public void clickOnDescription(String str) throws UiObjectNotFoundException{
+		UiObject clickOnDescription = new UiObject(new UiSelector()
+        .description(str));
+		clickOnDescription.click();
+	}
+	
+	public void clickOnIndex(Integer index) throws UiObjectNotFoundException{
+		UiObject clickOnIndex = new UiObject(new UiSelector()
+        .index(index));
+		clickOnIndex.click();
+	}
+	public void clickOnInstance(Integer instance) throws UiObjectNotFoundException{
+		UiObject clickOnInstance = new UiObject(new UiSelector()
+        .instance(instance));
+		clickOnInstance.click();
+	}
+	
+	public void assertCurrentPackage(String packageName){		
+		UiObject packageValidation = new UiObject(new UiSelector()
+        .packageName(packageName));
+        assertTrue("Unable to detect package :"+packageName, 
+        packageValidation.exists()); 
+	}
 }
