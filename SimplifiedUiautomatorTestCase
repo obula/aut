@@ -9,7 +9,12 @@ import com.android.uiautomator.core.UiSelector;
 import com.android.uiautomator.testrunner.UiAutomatorTestCase;
 
 public class AutTestCase extends UiAutomatorTestCase {   
-  
+
+	public static void logMessage(String logMessage) {
+    	String strLogMessage = "*** GNM: " + logMessage;
+    	System.out.println(strLogMessage);
+	}  
+
 	public void clickByDescription(String text) throws UiObjectNotFoundException {
         UiObject obj = new UiObject(new UiSelector().description(text));
         obj.clickAndWaitForNewWindow();
