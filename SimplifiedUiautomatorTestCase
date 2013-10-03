@@ -14,7 +14,14 @@ public class AutTestCase extends UiAutomatorTestCase {
     	On
 	};
 	
+	Uiobject getByTextAndClass(String text, String className) {
+    	return new UiObject(new UiSelector().text(text).className(className)); // examplegetByTextAndClass("3", android.widget.Button.class.getName()).click();
+	}
+	
+	
+	
 	private void setSwitchTo(OnOff value) throws UiObjectNotFoundException {
+	  
 	    String text;
     	UiObject switchObject = getSwitchObject();
     	for (int attempts = 0; attempts < 5; attempts++) {
