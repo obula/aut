@@ -10,6 +10,22 @@ import com.android.uiautomator.testrunner.UiAutomatorTestCase;
 
 public class AutTestCase extends UiAutomatorTestCase {   
 
+	public static void swipeDownNotificationBar () {
+    	UiDevice deviceInstance = UiDevice.getInstance();
+    	int dHeight = deviceInstance.getDisplayHeight();
+    	int dWidth = deviceInstance.getDisplayWidth();
+    	System.out.println("height =" +dHeight);
+    	System.out.println("width =" +dWidth);
+    		int xScrollPosition = dWidth/2;
+    		int yScrollStop = dHeight/2;
+    		UiDevice.getInstance().swipe(
+        	xScrollPosition, 
+        	0, 
+        	xScrollPosition, 
+        	yScrollStop, 
+        	100
+    		);
+	}
 	public static void logMessage(String logMessage) {
     	String strLogMessage = "*** GNM: " + logMessage;
     	System.out.println(strLogMessage);
