@@ -1,4 +1,4 @@
 AUT
 ===
 
-AUT is an Android Ui Testing framework that allows android native applications functional testing ,system smoke testing and Stability testing. It is completely based on android uiautomator.
+Test your android(<4.1) device or emulator NOT only your application.It is simple and an extension of Uiautomator.
