@@ -73,6 +73,13 @@ public class AutTestCase extends UiAutomatorTestCase {
     }
 }
 
+public static void delay(long millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+        }
+    }
+
 public doWifi_Off{// Validate that the package name is the expected one
     UiObject settingsValidation = new UiObject(new UiSelector()
     .packageName("com.android.settings"));
