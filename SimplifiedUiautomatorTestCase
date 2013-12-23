@@ -26,6 +26,16 @@ public class AutTestCase extends UiAutomatorTestCase {
         switchTo(switchBluetooth, "Bluetooth");
     }
     
+    public static String getScreenshot() {
+        try {
+            String fname = "/sdcard/" + (new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss")).format(new Date()) + ".png";
+            UiDevice.getInstance().takeScreenshot(new File(fname));
+            return fname;
+        } catch (NoSuchMethodError e) {
+            log("can't take screenshot");
+            return null;
+        }
+    }
      public static void enterText(int numberInView, String text) throws UiObjectNotFoundException {
         UiObject textObject = new UiObject(new UiSelector().className("android.widget.EditText").instance(numberInView));
         textObject.setText(text);
