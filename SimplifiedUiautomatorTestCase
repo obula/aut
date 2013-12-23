@@ -188,4 +188,7 @@ private UiObject getSwitchObject() {
         }
         return shell("getprop ro.product.name").trim();
     }
+     public static String getActivityName() {
+        return UiDevice.getInstance().getCurrentActivityName();
+    }
 }
