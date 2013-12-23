@@ -25,6 +25,11 @@ public class AutTestCase extends UiAutomatorTestCase {
         assertTrue("Unable to find bluetooth switch object", switchBluetooth.exists());
         switchTo(switchBluetooth, "Bluetooth");
     }
+    
+     public static void enterText(int numberInView, String text) throws UiObjectNotFoundException {
+        UiObject textObject = new UiObject(new UiSelector().className("android.widget.EditText").instance(numberInView));
+        textObject.setText(text);
+    }
 
     private void switchTo(UiObject switchObject, String name) throws UiObjectNotFoundException {
         // Before start test ensure switch is off
