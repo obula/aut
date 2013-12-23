@@ -180,4 +180,12 @@ private UiObject getSwitchObject() {
         assertTrue("Unable to detect package :"+packageName, 
         packageValidation.exists()); 
 	}
+	
+	 public static String getDeviceName() throws IOException {
+        try {
+            return UiDevice.getInstance().getProductName();
+        } catch (Error e) {
+        }
+        return shell("getprop ro.product.name").trim();
+    }
 }
