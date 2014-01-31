@@ -25,6 +25,20 @@ public class AutTestCase extends UiAutomatorTestCase {
 
 	private int _sdkInt;
 
+       public static final String TAG = "UIAutomatorLog";
+
+	public static void d(String msg) {
+		android.util.Log.d(TAG, msg);
+	}
+
+	public static void i(String msg) {
+		android.util.Log.i(TAG, msg);
+	}
+
+	public static void e(String msg) {
+		android.util.Log.e(TAG, msg);
+	}
+
     public final static DeviceInfo getDeviceInfo() {
         return new DeviceInfo();
     }
