@@ -382,4 +382,15 @@ private UiObject getSwitchObject() {
         return UiDevice.getInstance().swipe(startX,startY, endX, endY, steps);
     }
 
+
+   @Override
+    public String takeScreenshot(String filename, float scale, int quality) throws NotImplementedException {
+        if (Build.VERSION.SDK_INT < 17)
+            throw new NotImplementedException("takeScreenshot");
+        File f = new File(STORAGE_PATH, filename);
+        UiDevice.getInstance().takeScreenshot(f, scale, quality);
+        if (f.exists())
+            return f.getAbsolutePath();
+        return null;
+    }
 }
