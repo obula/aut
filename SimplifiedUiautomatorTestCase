@@ -26,6 +26,8 @@ public class AutTestCase extends UiAutomatorTestCase {
 	private int _sdkInt;
 
        public static final String TAG = "UIAutomatorLog";
+       
+       
 
 	public static void d(String msg) {
 		android.util.Log.d(TAG, msg);
@@ -332,4 +334,52 @@ private UiObject getSwitchObject() {
      public static String getActivityName() {
         return UiDevice.getInstance().getCurrentActivityName();
     }
+    
+     /**
+     * Perform a click at arbitrary coordinates specified by the user.
+     *
+     * @param x coordinate
+     * @param y coordinate
+     * @return true if the click succeeded else false
+     */
+    @Override
+    public boolean click(int x, int y) {
+        return UiDevice.getInstance().click(x, y);
+    }
+
+    /**
+     * Performs a swipe from one coordinate to another coordinate. You can control the smoothness and speed of the swipe by specifying the number of steps. Each step execution is throttled to 5 milliseconds per step, so for a 100 steps, the swipe will take around 0.5 seconds to complete.
+     *
+     * @param startX X-axis value for the starting coordinate
+     * @param startY Y-axis value for the starting coordinate
+     * @param endX   X-axis value for the ending coordinate
+     * @param endY   Y-axis value for the ending coordinate
+     * @param steps  is the number of steps for the swipe action
+     * @return true if swipe is performed, false if the operation fails or the coordinates are invalid
+     * @throws com.github.uiautomatorstub.NotImplementedException
+     *
+     */
+    @Override
+    public boolean drag(int startX, int startY, int endX, int endY, int steps) throws NotImplementedException {
+        if (Build.VERSION.SDK_INT < 18)
+            throw new NotImplementedException();
+
+        return UiDevice.getInstance().drag(startX, startY, endX, endY, steps);
+    }
+
+    /**
+     * Performs a swipe from one coordinate to another using the number of steps to determine smoothness and speed. Each step execution is throttled to 5ms per step. So for a 100 steps, the swipe will take about 1/2 second to complete.
+     *
+     * @param startX X-axis value for the starting coordinate
+     * @param startY Y-axis value for the starting coordinate
+     * @param endX   X-axis value for the ending coordinate
+     * @param endY   Y-axis value for the ending coordinate
+     * @param steps  is the number of move steps sent to the system
+     * @return false if the operation fails or the coordinates are invalid
+     */
+    @Override
+    public boolean swipe(int startX, int startY, int endX, int endY, int steps) {
+        return UiDevice.getInstance().swipe(startX,startY, endX, endY, steps);
+    }
+
 }
