@@ -393,4 +393,15 @@ private UiObject getSwitchObject() {
             return f.getAbsolutePath();
         return null;
     }
+    
+    /**
+     * Checks the power manager if the screen is ON.
+     *
+     * @return true if the screen is ON else false
+     * @throws android.os.RemoteException
+     */
+    @Override
+    public boolean isScreenOn() throws RemoteException {
+        return UiDevice.getInstance().isScreenOn();
+    }
 }
