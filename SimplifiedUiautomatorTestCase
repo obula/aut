@@ -27,7 +27,21 @@ public class AutTestCase extends UiAutomatorTestCase {
 
        public static final String TAG = "UIAutomatorLog";
        
-       
+       /**
+	 * Ensure that each and every test case will start from home screen. Also reset 
+	 * any orientation changes that may have been set if by previous tests 
+	 */
+	@Override
+	public void tearDown() throws Exception {
+		super.tearDown();
+
+		// Reset orientation back to normal
+		getUiDevice.setOrientationNatural();
+		getUiDevice.unfreezeRotation();
+		getUiDevice.pressHome();
+
+	}
+
 
 	public static void d(String msg) {
 		android.util.Log.d(TAG, msg);
